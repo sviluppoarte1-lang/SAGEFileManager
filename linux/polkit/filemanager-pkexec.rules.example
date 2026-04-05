@@ -1,0 +1,22 @@
+/*
+ * SAGE File Manager (com.sagefile.manager) — esempio Polkit legacy.
+ *
+ * Per CIFS senza password a ogni riavvio, preferisci anche:
+ *   linux/polkit/90-com.sagefile.manager-mount-cifs.rules.example
+ *
+ * Questo file: copia come root in /etc/polkit-1/rules.d/49-sagefile.rules
+ * e sostituisci ABS_PATH con il percorso reale del binario, ad es.:
+ *   readlink -f /percorso/build/linux/x64/release/bundle/sage-file-manager
+ *
+ * Dopo la modifica: sudo systemctl restart polkit (o riavvio sessione).
+ */
+
+polkit.addRule(function (action, subject) {
+    if (action.id !== "org.freedesktop.policykit.exec") {
+        return;
+    }
+    var prog = action.lookup("program") || action.lookup("exec.path") || "";
+    if (prog === "ABS_PATH") {
+        return polkit.Result.AUTH_ADMIN_KEEP_SESSION;
+    }
+});

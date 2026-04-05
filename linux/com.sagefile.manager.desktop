@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=SAGE File Manager
+GenericName=File Manager
+Comment=Browse files, SMB/LAN, split view, trash, and previews
+Exec=sage-file-manager %F
+Icon=com.sagefile.manager
+StartupNotify=true
+StartupWMClass=sage-file-manager
+Terminal=false
+Categories=System;FileManager;
+MimeType=inode/directory;

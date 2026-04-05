@@ -1,0 +1,38 @@
+/*
+ * SAGE File Manager — esempio Polkit (Linux)
+ *
+ * Quando mount.cifs richiede privilegi elevati, l’app usa pkexec. Senza una regola,
+ * il sistema chiede la password amministratore a ogni montaggio (es. dopo ogni riavvio).
+ *
+ * Questa regola consente pkexec **solo** per comandi mount.cifs che montano sotto i
+ * punti temporanei usati dall’app (percorso che contiene "fm_cifs_"), per l’utente
+ * della sessione attiva locale.
+ *
+ * Installazione (adatta il nome file se necessario):
+ *   sudo cp 90-com.sagefile.manager-mount-cifs.rules.example \
+ *          /etc/polkit-1/rules.d/90-com.sagefile.manager-mount-cifs.rules
+ *   sudo systemctl restart polkit
+ *
+ * Verifica la sintassi con la versione di Polkit della tua distro; su alcune release
+ * i lookup (program / command_line) possono differire — in tal caso usa anche
+ * filemanager-pkexec.rules.example (path binario: sage-file-manager) per pkexec/mount.cifs.
+ */
+
+polkit.addRule(function (action, subject) {
+    if (action.id !== "org.freedesktop.policykit.exec") {
+        return;
+    }
+    if (!subject.local || !subject.active) {
+        return;
+    }
+    var prog = action.lookup("program") || action.lookup("exec.path") || "";
+    var cmd = action.lookup("command_line") || action.lookup("exec.argv") || "";
+    var combined = prog + " " + cmd;
+    if (combined.indexOf("mount.cifs") < 0) {
+        return;
+    }
+    if (combined.indexOf("fm_cifs_") < 0 && combined.indexOf("/tmp/fm_cifs") < 0) {
+        return;
+    }
+    return polkit.Result.YES;
+});

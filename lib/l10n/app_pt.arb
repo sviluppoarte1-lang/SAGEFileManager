@@ -1,0 +1,1510 @@
+{
+  "@@locale": "pt",
+  "appTitle": "SAGE File Manager",
+  "menuTooltip": "Menu",
+  "menuTopFile": "Ficheiro",
+  "menuTopEdit": "Editar",
+  "menuTopView": "Ver",
+  "menuTopFavorites": "Favoritos",
+  "menuTopThemes": "Temas",
+  "menuTopTools": "Ferramentas",
+  "menuTopHelp": "Ajuda",
+  "menuNewTab": "Abrir novo separador (F2)",
+  "menuNewFolder": "Nova pasta",
+  "menuNewTextFile": "Novo documento de texto",
+  "menuNetworkDrive": "Ligar unidade de rede",
+  "menuBulkRename": "Mudar o nome",
+  "menuEmptyTrash": "Esvaziar lixo",
+  "menuExit": "Sair",
+  "menuCut": "Cortar (Ctrl+X)",
+  "menuCopy": "Copiar (Ctrl+C)",
+  "menuPaste": "Colar (Ctrl+V)",
+  "menuUndo": "Anular (Ctrl+Z)",
+  "menuRedo": "Refazer (Ctrl+Y)",
+  "menuRefresh": "Atualizar (F5)",
+  "menuSelectAll": "Selecionar tudo",
+  "menuDeselectAll": "Desmarcar tudo",
+  "menuFind": "Localizar (F1)",
+  "menuPreferences": "Preferências",
+  "snackOneFileCut": "1 item cortado para a área de transferência",
+  "snackManyFilesCut": "{count} itens cortados para a área de transferência",
+  "@snackManyFilesCut": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "snackOneFileCopied": "1 item copiado para a área de transferência",
+  "snackManyFilesCopied": "{count} itens copiados para a área de transferência",
+  "@snackManyFilesCopied": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "sortArrangeIcons": "Dispor ícones",
+  "sortManual": "Manualmente",
+  "sortByName": "Por nome",
+  "sortBySize": "Por tamanho",
+  "sortByType": "Por tipo",
+  "sortByDetailedType": "Por tipo detalhado",
+  "sortByDate": "Por data de modificação",
+  "sortReverse": "Ordem inversa",
+  "viewShowHidden": "Mostrar ficheiros ocultos",
+  "viewHideHidden": "Ocultar ficheiros ocultos",
+  "viewSplitScreen": "Vista dividida (F3)",
+  "viewShowPreview": "Mostrar pré-visualização",
+  "viewHidePreview": "Ocultar pré-visualização",
+  "viewShowRightPanel": "Mostrar barra lateral direita",
+  "viewHideRightPanel": "Ocultar barra lateral direita",
+  "favAdd": "Adicionar aos favoritos",
+  "favManage": "Gerir favoritos",
+  "themesManage": "Gestor de temas",
+  "toolsPackages": "Desinstalar / instalar aplicações",
+  "toolsUpdates": "Procurar atualizações",
+  "toolsBulkRenamePattern": "Mudar nome em massa (padrão)",
+  "toolsExtractArchive": "Extrair arquivo",
+  "helpShortcuts": "Atalhos de teclado",
+  "helpUserGuide": "Guia do utilizador",
+  "helpUserGuideTitle": "Guia da aplicação",
+  "helpUserGuideBlock1": "NAVEGAÇÃO\n• Barra lateral: pasta pessoal, pastas padrão (Ambiente de trabalho, Documentos…), caminhos adicionados, favoritos, rede e discos montados. Arraste linhas para reordenar.\n• Barra de ferramentas e caminho: pasta superior, atualizar e pesquisa global.\n• Backspace: voltar no histórico. Se ativo nas Preferências, duplo clique em espaço vazio sobe à pasta superior.\n• Duplo clique numa pasta para abrir; duplo clique num ficheiro para abrir com a aplicação predefinida.",
+  "helpUserGuideBlock2": "FICHEIROS E ÁREA DE TRANSFERÊNCIA\n• Clique para selecionar; arraste um retângulo para vários itens. Ctrl para multiseleção, Shift para intervalos. Esc desmarca tudo.\n• Ctrl+C, Ctrl+X, Ctrl+V copiam, cortam e colam. Pode arrastar a seleção para fora da janela.\n• Botão direito: menu de contexto (mudar nome, eliminar, propriedades…). Os menus Ficheiro e Editar têm as mesmas ações.",
+  "helpUserGuideBlock3": "VISTAS E PESQUISA\n• Menu Ver: lista, grelha ou detalhes; ficheiros ocultos; ecrã dividido (F3); pré-visualização e painel direito (F6).\n• F5 atualiza a pasta atual. F2 abre uma nova janela.\n• Ferramentas → Localizar (F1) abre a pesquisa de ficheiros: filtros por nome, extensão, tamanho, tipo e data; uma árvore ou todos os volumes montados se a opção estiver ativa.",
+  "helpUserGuideBlock4": "DEFINIÇÕES E MAIS\n• Favoritos e Gestão de temas no menu superior (abre o editor de temas). Preferências: cliques, idioma, menu compacto, ecrã dividido e operações com ficheiros.\n• Computador lista discos. Adicione caminhos de rede na barra lateral; para SMB a app pode sugerir dependências.\n• Ferramentas: localizar ficheiros (F1), gestor de pacotes e verificação de atualizações quando disponíveis.\n• Ajuda → Atalhos de teclado lista todas as teclas; este guia resume o essencial.",
+  "helpAbout": "Acerca",
+  "helpGitHubProject": "Projeto no GitHub",
+  "helpDonateNow": "Doar agora",
+  "helpCheckAppUpdate": "Procurar atualização da aplicação",
+  "appUpdateNewVersionAvailable": "A versão {version} está disponível.",
+  "@appUpdateNewVersionAvailable": {
+    "placeholders": {
+      "version": {}
+    }
+  },
+  "appUpdateViewRelease": "Ver lançamento",
+  "appUpdateCheckFailed": "Não foi possível verificar atualizações (rede ou GitHub).",
+  "appUpdateAlreadyLatest": "Já está a usar a versão mais recente.",
+  "navBack": "Recuar",
+  "navForward": "Avançar",
+  "navUp": "Subir",
+  "prefsGeneral": "Geral",
+  "prefsSingleClickOpen": "Clique único para abrir",
+  "prefsSingleClickOpenSubtitle": "Abrir ficheiros e pastas com um único clique",
+  "prefsDoubleClickRename": "Duplo clique para mudar o nome",
+  "prefsDoubleClickRenameSubtitle": "Mudar o nome com duplo clique no nome",
+  "prefsDoubleClickEmptyUp": "Duplo clique na área vazia para subir",
+  "prefsDoubleClickEmptyUpSubtitle": "Ir para a pasta superior com duplo clique no espaço vazio",
+  "prefsLanguage": "Idioma",
+  "prefsLanguageLabel": "Idioma da interface",
+  "prefsMenuCompactTitle": "Menu compacto",
+  "prefsMenuCompactSubtitle": "Agrupar itens do menu atrás do ícone de três linhas em vez da barra clássica",
+  "smbShellLimitedModeGvfsFallback": "Montagem CIFS falhou: pastas só via smbclient. Instale cifs-utils e confirme que mount.cifs está disponível e tente de novo.",
+  "smbShellFileOpenUnavailable": "Caminho só smbclient (sem montagem CIFS). Monte a partilha com mount.cifs ou desative a opção se a montagem CIFS funcionar.",
+  "prefsExecTextTitle": "Ficheiros de texto executáveis",
+  "prefsExecAuto": "Executar automaticamente",
+  "prefsExecAlwaysShow": "Mostrar sempre",
+  "prefsExecAlwaysAsk": "Perguntar sempre",
+  "prefsDefaultFmTitle": "Gestor de ficheiros predefinido",
+  "prefsDefaultFmBody": "Definir este gestor como aplicação predefinida para abrir pastas.",
+  "prefsDefaultFmButton": "Definir como gestor predefinido",
+  "langItalian": "Italiano",
+  "langEnglish": "Inglês",
+  "langFrench": "Francês",
+  "langSpanish": "Espanhol",
+  "langPortuguese": "Português",
+  "langGerman": "Alemão",
+  "fileListTypeFolder": "Pasta",
+  "fileListTypeFile": "Ficheiro",
+  "fileListEmpty": "Sem ficheiros",
+  "copyProgressTitle": "A copiar",
+  "copyProgressCancelTooltip": "Cancelar",
+  "copySpeed": "Velocidade: {speed}",
+  "@copySpeed": {
+    "placeholders": {
+      "speed": {
+        "type": "String"
+      }
+    }
+  },
+  "copyRemaining": "Tempo restante: {time}",
+  "@copyRemaining": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "copyProgressDestLine": "→ {name}",
+  "@copyProgressDestLine": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "statusItems": "Itens: {count}",
+  "@statusItems": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "statusFree": "Livre: {size}",
+  "@statusFree": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "statusUsed": "Usado: {size}",
+  "@statusUsed": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "statusTotal": "Total: {size}",
+  "@statusTotal": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "statusCopyLine": "Cópia: {source} → {dest}",
+  "@statusCopyLine": {
+    "placeholders": {
+      "source": {
+        "type": "String"
+      },
+      "dest": {
+        "type": "String"
+      }
+    }
+  },
+  "statusCurrentFile": "Ficheiro: {name}",
+  "@statusCurrentFile": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dialogCloseWhileCopyTitle": "Operação em curso",
+  "dialogCloseWhileCopyBody": "Há uma cópia ou movimento em curso. Fechar pode interromper. Continuar?",
+  "dialogCancel": "Cancelar",
+  "dialogOverwriteTitle": "Substituir o item existente?",
+  "dialogOverwriteBody": "\"{name}\" já existe nesta pasta. Substituir?",
+  "@dialogOverwriteBody": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dialogOverwriteReplace": "Substituir",
+  "dialogOverwriteSkip": "Ignorar",
+  "dialogCloseAnyway": "Fechar mesmo assim",
+  "commonClose": "Fechar",
+  "commonSave": "Guardar",
+  "commonDelete": "Eliminar",
+  "commonRename": "Mudar o nome",
+  "commonAdd": "Adicionar",
+  "commonError": "Erro: {message}",
+  "@commonError": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "errorFolderRequiresOpenAsRoot": "Para abrir esta pasta, use «Abrir como root».",
+  "sidebarAddNetworkTitle": "Adicionar localização de rede",
+  "sidebarNetworkPathLabel": "Caminho de rede",
+  "sidebarNetworkHint": "smb://servidor/partilha ou //servidor/partilha",
+  "sidebarNetworkHelp": "Exemplos:\n• smb://192.168.1.100/partilhado\n• //servidor/partilha\n• /mnt/rede",
+  "sidebarBrowseTooltip": "Procurar",
+  "sidebarRenameShareTitle": "Mudar o nome da partilha de rede",
+  "sidebarRemoveShareTitle": "Remover partilha de rede",
+  "sidebarRemoveShareConfirm": "Remover \"{name}\" da lista?",
+  "@sidebarRemoveShareConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "sidebarUnmountTitle": "Desmontar disco",
+  "sidebarUnmountConfirm": "Desmontar \"{name}\"?",
+  "@sidebarUnmountConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "sidebarUnmount": "Desmontar",
+  "sidebarUnmountOk": "\"{name}\" desmontado",
+  "@sidebarUnmountOk": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "sidebarUnmountFail": "Falha ao desmontar \"{name}\"",
+  "@sidebarUnmountFail": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "sidebarEmptyTrash": "Esvaziar lixo",
+  "sidebarRemoveFromList": "Remover da lista",
+  "sidebarMenuChangeColor": "Mudar cor",
+  "sidebarChangeColorDialogTitle": "Mudar cor: {name}",
+  "@sidebarChangeColorDialogTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "sidebarProperties": "Propriedades",
+  "sidebarPropertiesFolderTitle": "Propriedades: {name}",
+  "@sidebarPropertiesFolderTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "sidebarChangeFolderColor": "Cor da pasta:",
+  "sidebarRemoveCustomColor": "Remover cor personalizada",
+  "sidebarChangeAllFoldersColor": "Cor de todas as pastas",
+  "sidebarPickDefaultColor": "Escolha uma cor predefinida para todas as pastas:",
+  "sidebarEmptyTrashTitle": "Esvaziar lixo",
+  "sidebarEmptyTrashBody": "Esvaziar o lixo de forma permanente? Não pode ser anulado.",
+  "sidebarEmptyTrashConfirm": "Esvaziar",
+  "sidebarTrashEmptied": "Lixo esvaziado",
+  "sidebarCredentialsTitle": "Credenciais para {server}",
+  "@sidebarCredentialsTitle": {
+    "placeholders": {
+      "server": {
+        "type": "String"
+      }
+    }
+  },
+  "sidebarGuestAccess": "Acesso convidado (anónimo)",
+  "sidebarConnect": "Ligar",
+  "sidebarConnecting": "A ligar a {name}...",
+  "@sidebarConnecting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "sidebarConnectionError": "Erro ao ligar a {name}",
+  "@sidebarConnectionError": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "sidebarRetry": "Tentar novamente",
+  "copyCancelled": "Cópia cancelada",
+  "fileCopiedSuccess": "Ficheiro copiado",
+  "folderCopiedSuccess": "Pasta copiada",
+  "extractionComplete": "Extração concluída",
+  "snackInitError": "Erro de inicialização: {error}",
+  "@snackInitError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "snackPathRemoved": "Removido da lista: {name}",
+  "@snackPathRemoved": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "labelChoosePath": "Escolher caminho",
+  "ctxOpenTerminal": "Abrir terminal",
+  "ctxNewFolder": "Nova pasta",
+  "ctxOpenAsRoot": "Abrir como root",
+  "ctxOpenWith": "Abrir com…",
+  "ctxCopyTo": "Copiar para…",
+  "ctxMoveTo": "Mover para…",
+  "ctxCopy": "Copiar",
+  "ctxCut": "Cortar",
+  "ctxPaste": "Colar",
+  "ctxCreateNew": "Novo",
+  "ctxNewTextDocumentShort": "Documento de texto (.txt)",
+  "ctxNewWordDocument": "Documento Word (.docx)",
+  "ctxNewExcelSpreadsheet": "Folha de cálculo Excel (.xlsx)",
+  "ctxExtract": "Extrair",
+  "ctxExtractTo": "Extrair arquivo para…",
+  "ctxCompressToZip": "Comprimir para ficheiro .zip",
+  "snackZipCreated": "Arquivo criado: \"{name}\".",
+  "@snackZipCreated": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "snackZipFailed": "Não foi possível criar o ZIP: {message}",
+  "@snackZipFailed": {
+    "placeholders": {
+      "message": {}
+    }
+  },
+  "ctxChangeColor": "Alterar cor",
+  "ctxMoveToTrash": "Mover para o lixo",
+  "ctxRestoreFromTrash": "Restaurar na pasta original",
+  "menuRestoreFromTrash": "Restaurar do lixo",
+  "trashRestorePickFolderTitle": "Escolher pasta para restaurar",
+  "trashRestoreTargetExists": "Não é possível restaurar: \"{name}\" já existe no destino.",
+  "@trashRestoreTargetExists": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "trashRestoredCount": "{count} itens restaurados",
+  "@trashRestoredCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "trashRestoreFailed": "Não foi possível restaurar os itens selecionados.",
+  "dialogOpenWithTitle": "Abrir \"{name}\" com…",
+  "@dialogOpenWithTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "hintSearchApp": "Procurar aplicação…",
+  "openWithDefaultApp": "Aplicação predefinida",
+  "browseEllipsis": "Procurar…",
+  "tooltipSetAsDefaultApp": "Definir como aplicação predefinida",
+  "openWithOpenAndSetDefault": "Abrir e definir como predefinida",
+  "openWithFooterHint": "Use a estrela ou o menu ⋮ para alterar a aplicação predefinida para este tipo de ficheiro a qualquer momento.",
+  "snackDefaultAppSet": "{appName} definida como predefinida para {mimeType}",
+  "@snackDefaultAppSet": {
+    "placeholders": {
+      "appName": {
+        "type": "String"
+      },
+      "mimeType": {
+        "type": "String"
+      }
+    }
+  },
+  "snackSetDefaultAppError": "Não foi possível definir o predefinido: {error}",
+  "@snackSetDefaultAppError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "snackOpenFileError": "Não foi possível abrir: {error}",
+  "@snackOpenFileError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "dialogTitleCreateFolder": "Criar nova pasta",
+  "dialogTitleNewFolder": "Nova pasta",
+  "labelFolderName": "Nome da pasta",
+  "hintFolderName": "Introduza o nome da pasta",
+  "labelFileName": "Nome do ficheiro",
+  "hintTextDocument": "documento.txt",
+  "buttonCreate": "Criar",
+  "snackMoveError": "Erro ao mover: {error}",
+  "@snackMoveError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "dialogChangeColorFor": "Alterar cor: {name}",
+  "@dialogChangeColorFor": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dialogPickFolderColor": "Escolha uma cor para a pasta:",
+  "shortcutTitle": "Atalhos de teclado",
+  "shortcutCopy": "Copiar ficheiros/pastas selecionados",
+  "shortcutPaste": "Colar ficheiros/pastas",
+  "shortcutCut": "Cortar ficheiros/pastas selecionados",
+  "shortcutUndo": "Anular última operação",
+  "shortcutRedo": "Refazer última operação",
+  "shortcutNewTab": "Novo separador",
+  "shortcutSplitView": "Dividir ecrã em dois",
+  "shortcutRefresh": "Atualizar pasta atual",
+  "shortcutRightPanel": "Mostrar/ocultar barra lateral direita",
+  "shortcutDeselect": "Desmarcar tudo",
+  "shortcutBackNav": "Recuar na navegação",
+  "shortcutFindFiles": "Encontrar ficheiros e pastas",
+  "aboutTitle": "Acerca",
+  "aboutAppName": "Gestor de ficheiros",
+  "aboutTagline": "Gestor de ficheiros avançado",
+  "aboutVersionLabel": "Versão: {version}",
+  "@aboutVersionLabel": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "aboutAuthor": "Autor: Marco Di Giangiacomo",
+  "aboutYear": "© 2026",
+  "aboutDescriptionHeading": "Descrição:",
+  "aboutDescription": "SAGE File Manager: gestor moderno para Linux com várias vistas, pré-visualizações, temas, pesquisa, cópia otimizada, vista dividida, SMB/LAN e mais.",
+  "aboutFeaturesHeading": "Principais funcionalidades:",
+  "aboutFeaturesList": "• Gestão completa de ficheiros e pastas\n• Vistas múltiplas (lista, grelha, detalhes)\n• Pré-visualização (imagens, PDF, documentos, texto)\n• Gestão de temas (predefinidos e personalização)\n• Pesquisa avançada\n• Copiar/colar otimizado\n• Vista dividida\n• Favoritos e caminhos\n• Executáveis e scripts\n• Interface moderna",
+  "snackDocumentCreated": "Documento \"{name}\" criado",
+  "@snackDocumentCreated": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dialogInsufficientPermissions": "Permissões insuficientes",
+  "snackFolderCreated": "Pasta criada",
+  "snackTerminalUnavailable": "Terminal indisponível",
+  "snackTerminalRootError": "Não foi possível abrir o terminal como root",
+  "snackRootHelperMissing": "Não foi possível abrir como root. Instale pkexec ou sudo.",
+  "snackOpenAsRootNoFolder": "Abra primeiro uma pasta e escolha Abrir como root.",
+  "snackOpenAsRootBadFolder": "Não é possível abrir essa pasta.",
+  "snackPasteItemError": "Erro ao colar {name}: {error}",
+  "@snackPasteItemError": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "snackFileMoved": "Ficheiro movido",
+  "dialogRenameFileTitle": "Mudar o nome",
+  "dialogRenameManySubtitle": "{count} itens selecionados. Introduza um novo nome em cada linha.",
+  "@dialogRenameManySubtitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "labelNewName": "Novo nome",
+  "snackFileRenamed": "Ficheiro renomeado",
+  "snackRenameError": "Erro ao renomear: {error}",
+  "@snackRenameError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "snackRenameSameFolder": "Todos os itens selecionados devem estar na mesma pasta.",
+  "snackRenameEmptyName": "Cada item precisa de um novo nome não vazio.",
+  "snackRenameDuplicateNames": "Os novos nomes devem ser todos diferentes.",
+  "snackRenameTargetExists": "Já existe um ficheiro ou pasta com esse nome.",
+  "snackSelectPathFirst": "Selecione primeiro um caminho",
+  "snackAlreadyFavorite": "Já está nos favoritos",
+  "snackAddedFavorite": "Adicionado aos favoritos: {name}",
+  "@snackAddedFavorite": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "favoritesEmptyList": "Ainda sem favoritos",
+  "snackNewTabOpened": "Novo separador: {name}",
+  "@snackNewTabOpened": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "snackSelectForSymlink": "Selecione um ficheiro ou pasta para o atalho",
+  "dialogCreateSymlinkTitle": "Criar atalho",
+  "labelSymlinkName": "Nome do atalho",
+  "snackSymlinkCreated": "Atalho criado",
+  "snackConnectingNetwork": "A ligar à rede…",
+  "snackNewInstanceStarted": "Nova instância iniciada",
+  "snackNewInstanceError": "Não foi possível iniciar nova instância: {error}",
+  "@snackNewInstanceError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "snackSelectFilesRename": "Selecione pelo menos um ficheiro para renomear",
+  "bulkRenameTitle": "Mudar nome em massa",
+  "bulkRenameSelectedCount": "{count} ficheiros selecionados",
+  "@bulkRenameSelectedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "bulkRenamePatternLabel": "Padrão de nome",
+  "bulkRenamePatternHelper": "Use os marcadores name e num entre chavetas (veja o exemplo abaixo).",
+  "bulkRenameAutoNumber": "Numeração automática",
+  "bulkRenameStartNumber": "Número inicial",
+  "bulkRenameKeepExt": "Manter extensão original",
+  "trashEmptyError": "Erro ao esvaziar o lixo: {error}",
+  "@trashEmptyError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "labelNItems": "{count} itens",
+  "@labelNItems": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dialogTitleDeletePermanent": "Eliminar permanentemente?",
+  "dialogTitleMoveToTrashConfirm": "Mover para o lixo?",
+  "dialogBodyPermanentDeleteOne": "Eliminar permanentemente um item?",
+  "dialogBodyPermanentDeleteMany": "Eliminar permanentemente {count} itens?",
+  "@dialogBodyPermanentDeleteMany": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dialogBodyTrashOne": "Mover um item para o lixo?",
+  "dialogBodyTrashMany": "Mover {count} itens para o lixo?",
+  "@dialogBodyTrashMany": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "snackDeletedPermanentOne": "Um item eliminado permanentemente",
+  "snackDeletedPermanentMany": "{count} itens eliminados permanentemente",
+  "@snackDeletedPermanentMany": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "snackMovedToTrashOne": "Um item movido para o lixo",
+  "snackMovedToTrashMany": "{count} itens movidos para o lixo",
+  "@snackMovedToTrashMany": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "snackDeleteErrorsSuffix": ", {errors} erros",
+  "@snackDeleteErrorsSuffix": {
+    "placeholders": {
+      "errors": {
+        "type": "int"
+      }
+    }
+  },
+  "dialogOpenAsRootBody": "Não tem permissão para criar ficheiros ou pastas nesta pasta. Abrir o gestor de ficheiros como root?",
+  "dialogOpenAsRootAuthTitle": "Abrir como administrador",
+  "dialogOpenAsRootAuthBody": "Depois de Continuar, o sistema pedirá a palavra-passe de administrador. Só após autenticação bem-sucedida é que uma nova janela do gestor de ficheiros abrirá nesta pasta.",
+  "dialogOpenAsRootContinue": "Continuar",
+  "paneSelectPathHint": "Selecione um caminho",
+  "emptyFolderLabel": "Pasta vazia",
+  "sidebarMountPointOptional": "Ponto de montagem (opcional)",
+  "snackBulkRenameManyDone": "{count} ficheiros renomeados",
+  "@snackBulkRenameManyDone": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "commonOk": "OK",
+  "prefsPageTitle": "Preferências",
+  "snackPrefsSaved": "Preferências guardadas",
+  "prefsNavView": "Visualização",
+  "prefsNavPreview": "Pré-visualização",
+  "prefsNavFileOps": "Operações de ficheiros",
+  "prefsNavTrash": "Lixo",
+  "prefsNavMedia": "Suportes removíveis",
+  "prefsNavCache": "Cache",
+  "prefsDefaultFmSuccess": "Gestor de ficheiros definido como predefinido.",
+  "prefsShowHiddenTitle": "Mostrar ficheiros ocultos",
+  "prefsShowHiddenSubtitle": "Mostrar ficheiros e pastas cujo nome começa por ponto",
+  "prefsShowPreviewPanelTitle": "Mostrar painel de pré-visualização",
+  "prefsShowPreviewPanelSubtitle": "Mostrar o painel de pré-visualização à direita",
+  "prefsAlwaysDoublePaneTitle": "Iniciar sempre com vista dividida",
+  "prefsAlwaysDoublePaneSubtitle": "Abrir sempre a vista dividida ao iniciar",
+  "prefsIgnoreViewPerFolderTitle": "Ignorar preferências de vista por pasta",
+  "prefsIgnoreViewPerFolderSubtitle": "Não guardar preferências de vista por pasta",
+  "prefsDefaultViewModeTitle": "Modo de vista predefinido",
+  "prefsViewModeList": "Lista",
+  "prefsViewModeGrid": "Grelha",
+  "prefsViewModeDetails": "Detalhes",
+  "prefsGridZoomTitle": "Nível de zoom da grelha predefinido",
+  "prefsGridZoomLevel": "Nível: {current}/10",
+  "@prefsGridZoomLevel": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      }
+    }
+  },
+  "prefsFontSection": "Tipo de letra",
+  "prefsFontFamilyLabel": "Família de letra",
+  "labelSelectFont": "Selecionar tipo de letra",
+  "fontFamilyDefaultSystem": "Predefinido (sistema)",
+  "prefsFontSizeTitle": "Tamanho da letra",
+  "prefsFontSizeValue": "Tamanho: {size}",
+  "@prefsFontSizeValue": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "prefsFontWeightTitle": "Peso da letra",
+  "prefsFontWeightNormal": "Normal",
+  "prefsFontWeightBold": "Negrito",
+  "prefsFontWeightSemiBold": "Seminegrito",
+  "prefsFontWeightMedium": "Médio",
+  "prefsTextShadowSection": "Sombra do texto",
+  "prefsTextShadowEnableTitle": "Ativar sombra do texto",
+  "prefsTextShadowEnableSubtitle": "Adiciona sombra ao texto para legibilidade",
+  "prefsShadowIntensityTitle": "Desfoque da sombra",
+  "prefsShadowOffsetXTitle": "Deslocamento sombra X",
+  "prefsShadowOffsetYTitle": "Deslocamento sombra Y",
+  "prefsShadowColorTitle": "Cor da sombra",
+  "prefsShadowColorValue": "Cor: {value}",
+  "@prefsShadowColorValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "prefsShadowColorBlack": "Preto",
+  "dialogPickShadowColor": "Escolher cor da sombra",
+  "prefsPickColor": "Escolher cor",
+  "prefsTextPreviewLabel": "Pré-visualização de texto",
+  "prefsDisableFileQueueTitle": "Desativar fila de operações",
+  "prefsDisableFileQueueSubtitle": "Executar operações em sequência sem fila",
+  "prefsAskTrashTitle": "Perguntar antes de mover para o lixo",
+  "prefsAskTrashSubtitle": "Confirmar antes de mover para o lixo",
+  "prefsAskEmptyTrashTitle": "Perguntar antes de esvaziar o lixo",
+  "prefsAskEmptyTrashSubtitle": "Confirmar antes de eliminar definitivamente",
+  "prefsIncludeDeleteTitle": "Incluir comando Eliminar",
+  "prefsIncludeDeleteSubtitle": "Opção para eliminar sem lixo",
+  "prefsSkipTrashDelKeyTitle": "Ignorar lixo com Eliminar",
+  "prefsSkipTrashDelKeySubtitle": "Eliminar diretamente com Eliminar",
+  "prefsAutoMountTitle": "Montar automaticamente dispositivos",
+  "prefsAutoMountSubtitle": "Montar USB e outros ao ligar",
+  "prefsOpenWindowMountedTitle": "Abrir janela para dispositivos montados",
+  "prefsOpenWindowMountedSubtitle": "Abrir janela automaticamente",
+  "prefsWarnRemovableTitle": "Avisar ao ligar um dispositivo",
+  "prefsWarnRemovableSubtitle": "Notificação ao ligar suporte removível",
+  "prefsPreviewExtensionsIntro": "Extensões para ativar pré-visualização:",
+  "prefsPreviewRightPanelNote": "As pré-visualizações completas de PDF, Office, texto e outros tipos aparecem na barra lateral direita quando está visível. Se a barra estiver oculta, na lista de ficheiros só são mostradas miniaturas de imagens.",
+  "prefsAdminPasswordSection": "Palavra-passe de administrador",
+  "prefsSaveAdminPasswordTitle": "Guardar palavra-passe de administrador",
+  "prefsSaveAdminPasswordSubtitle": "Guardar palavra-passe para atualizações (não recomendado)",
+  "labelAdminPassword": "Palavra-passe de administrador",
+  "hintAdminPassword": "Introduzir palavra-passe",
+  "prefsCacheSectionTitle": "Cache e pré-visualizações",
+  "prefsCacheSizeTitle": "Tamanho da cache",
+  "prefsCacheSizeCurrent": "Tamanho atual: {size}",
+  "@prefsCacheSizeCurrent": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "labelNetworkShareName": "Nome personalizado",
+  "hintNetworkShareName": "Nome para esta partilha",
+  "sidebarTooltipRemoveNetwork": "Remover caminho de rede",
+  "sidebarTooltipUnmount": "Desmontar disco",
+  "sidebarUnmountSuccess": "«{name}» desmontado",
+  "@sidebarUnmountSuccess": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "sidebarUnmountError": "Erro ao desmontar «{name}»",
+  "@sidebarUnmountError": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "previewSelectFile": "Selecione um ficheiro para pré-visualizar",
+  "previewPanelTitle": "Pré-visualização",
+  "previewPanelSizeLine": "Tamanho: {value}",
+  "@previewPanelSizeLine": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "previewPanelModifiedLine": "Modificado: {value}",
+  "@previewPanelModifiedLine": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "dialogErrorTitle": "Erro",
+  "propsLoadError": "Não foi possível carregar propriedades",
+  "snackPermissionsUpdated": "Permissões atualizadas",
+  "dialogEditFieldTitle": "Editar {label}",
+  "@dialogEditFieldTitle": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "snackFieldUpdated": "{label} atualizado",
+  "@snackFieldUpdated": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "propsEditPermissionsTitle": "Editar permissões",
+  "permOwner": "Proprietário:",
+  "permGroup": "Grupo:",
+  "permOthers": "Outros:",
+  "permRead": "Leitura",
+  "permWrite": "Escrita",
+  "permExecute": "Execução",
+  "previewNotAvailable": "Pré-visualização indisponível",
+  "previewImageError": "Erro ao carregar imagem",
+  "previewDocLoadError": "Erro ao carregar documento",
+  "previewOpenExternally": "Abrir com visualizador externo",
+  "previewDocumentTitle": "Pré-visualização de documento",
+  "previewDocLegacyFormat": ".doc não suportado. Use .docx ou um visualizador externo.",
+  "previewSheetLoadError": "Erro ao carregar folha de cálculo",
+  "previewSheetTitle": "Pré-visualização de folha de cálculo",
+  "previewXlsLegacyFormat": ".xls não suportado. Use .xlsx ou um visualizador externo.",
+  "previewPresentationLoadError": "Erro ao carregar apresentação",
+  "previewOpenOfficeTitle": "Pré-visualização OpenOffice",
+  "previewOpenOfficeBody": "Ficheiros OpenOffice precisam de visualizador externo.",
+  "themeApplied": "Tema «{name}» aplicado",
+  "@themeApplied": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "themeDark": "Tema escuro",
+  "themeFontSizeTitle": "Tamanho da letra: {size}",
+  "@themeFontSizeTitle": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "themeFontWeightSection": "Peso da letra",
+  "themeBoldLabel": "Negrito",
+  "themeTextShadowSection": "Sombra do texto",
+  "themeShadowIntensity": "Intensidade da sombra: {percent}%",
+  "@themeShadowIntensity": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "themeColorPicked": "Cor selecionada",
+  "themeSelectToCustomize": "Selecione um tema para personalizar",
+  "themeFontFamilySection": "Família de letra",
+  "searchNeedCriterion": "Introduza pelo menos um critério",
+  "searchCurrentPath": "Caminho atual",
+  "searchButton": "Pesquisar",
+  "pkgConfirmUninstallTitle": "Confirmar desinstalação",
+  "pkgConfirmUninstallBody": "Desinstalar {name}?",
+  "@pkgConfirmUninstallBody": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "pkgDependenciesTitle": "Dependências encontradas",
+  "pkgUninstallError": "Erro na desinstalação",
+  "pkgManagerTitle": "Gestor de aplicações",
+  "pkgInstallTitle": "Instalar pacote",
+  "pkgInstallBody": "Instalar «{name}»?",
+  "@pkgInstallBody": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "pkgMadeExecutable": "{name} tornado executável",
+  "@pkgMadeExecutable": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "pkgUnsupportedFormat": "Formato de pacote não suportado",
+  "pkgInstallErrorOutput": "Erro na instalação: {output}",
+  "@pkgInstallErrorOutput": {
+    "placeholders": {
+      "output": {
+        "type": "String"
+      }
+    }
+  },
+  "updateItemSuccess": "{name} atualizado com sucesso",
+  "@updateItemSuccess": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "updateItemError": "Erro ao atualizar {name}",
+  "@updateItemError": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "updateAllError": "Erro ao instalar atualizações",
+  "updateInstallAllButton": "Instalar tudo",
+  "previewCatImages": "Imagens",
+  "previewCatDocuments": "Documentos",
+  "previewCatText": "Texto",
+  "previewCatWeb": "Web",
+  "previewCatOffice": "Office",
+  "previewExtTitle": ".{ext} — {name}",
+  "@previewExtTitle": {
+    "placeholders": {
+      "ext": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "bulkRenamePatternExample": "{a}, {a}_{b}, Documento_{b}",
+  "@bulkRenamePatternExample": {
+    "placeholders": {
+      "a": {
+        "type": "String"
+      },
+      "b": {
+        "type": "String"
+      }
+    }
+  },
+  "tableColumnName": "Nome",
+  "tableColumnPath": "Caminho",
+  "tableColumnSize": "Tamanho",
+  "tableColumnModified": "Modificado",
+  "tableColumnType": "Tipo",
+  "networkBrowserTitle": "Explorar rede",
+  "networkSearchingServers": "A procurar servidores…",
+  "networkNoServersFound": "Nenhum servidor encontrado",
+  "networkServersSharesHeader": "Servidores e partilhas",
+  "labelUsername": "Utilizador",
+  "labelPassword": "Palavra-passe",
+  "networkRefreshTooltip": "Atualizar",
+  "networkNoSharesAvailable": "Nenhuma partilha disponível",
+  "networkInfoTitle": "Informação",
+  "networkServersFoundCount": "Servidores encontrados: {count}",
+  "@networkServersFoundCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "networkConnectShareInstructions": "Para se ligar a uma partilha, expanda um servidor e toque na partilha pretendida.",
+  "networkSelectedServerLabel": "Servidor selecionado:",
+  "networkSharesCount": "Partilhas: {count}",
+  "@networkSharesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "sidebarTooltipBrowseNetworkPaths": "Explorar caminhos de rede",
+  "sidebarTooltipAddNetworkPath": "Adicionar caminho de rede",
+  "sidebarSectionNetwork": "Rede",
+  "sidebarSectionDisks": "Discos",
+  "sidebarAddPath": "Adicionar caminho",
+  "sidebarUserFolderHome": "Início",
+  "sidebarUserFolderDesktop": "Ambiente de trabalho",
+  "sidebarUserFolderDocuments": "Documentos",
+  "sidebarUserFolderPictures": "Imagens",
+  "sidebarUserFolderMusic": "Música",
+  "sidebarUserFolderVideos": "Vídeos",
+  "sidebarUserFolderDownloads": "Transferências",
+  "sidebarSectionFavorites": "Favoritos",
+  "commonUnknown": "Desconhecido",
+  "prefsClearCacheButton": "Limpar cache",
+  "prefsClearCacheTitle": "Limpar cache",
+  "prefsClearCacheBody": "Limpar toda a cache das miniaturas de pré-visualização?",
+  "prefsClearCacheConfirm": "Limpar",
+  "snackPrefsCacheCleared": "Cache limpa",
+  "previewFmtJpeg": "Imagem JPEG",
+  "previewFmtPng": "Imagem PNG",
+  "previewFmtGif": "Imagem GIF",
+  "previewFmtBmp": "Imagem BMP",
+  "previewFmtWebp": "Imagem WebP",
+  "previewFmtPdf": "Documento PDF",
+  "previewFmtPlainText": "Ficheiro de texto",
+  "previewFmtMarkdown": "Markdown",
+  "previewFmtNfo": "Ficheiro de informação",
+  "previewFmtShell": "Script shell",
+  "previewFmtHtml": "Documento HTML",
+  "previewFmtDocx": "Documento Word",
+  "previewFmtXlsx": "Folha Excel",
+  "previewFmtPptx": "Apresentação PowerPoint",
+  "themeAppliedSnackbar": "Theme \"{name}\" applied",
+  "themeEditTitle": "Edit theme",
+  "themeNewTitle": "New theme",
+  "themeFieldName": "Theme name",
+  "themeDarkThemeSwitch": "Dark theme",
+  "themeColorPrimary": "Primary color",
+  "themeColorSecondary": "Secondary color",
+  "themeColorFile": "File color",
+  "themeColorLocation": "Location bar color",
+  "themeColorBackground": "Background color",
+  "themeColorFolder": "Folder color",
+  "themeFolderIconsHint": "Icons are applied automatically based on folder type.",
+  "themeFolderIconPickColor": "Pick a color for folder icons",
+  "themeColorPickedSnack": "Color selected",
+  "themeManagerTitle": "Gestão de temas",
+  "themeBuiltinHeader": "Temas predefinidos",
+  "themeCustomHeader": "Temas personalizados",
+  "themeCustomizationHeader": "Customization",
+  "themeSelectPrompt": "Select a theme to customize",
+  "themeVariantLight": "Light",
+  "themeVariantDark": "Dark",
+  "themeColorsHeader": "Colors",
+  "themeFontHeader": "Font",
+  "themeFontFamilyRow": "Font family",
+  "themeFontSizeRow": "Font size: {size}",
+  "themeFontWeightHeader": "Font weight",
+  "themeTextShadow": "Text shadow",
+  "themeIconShadowTitle": "Sombra dos ícones (grelha)",
+  "themeIconShadowSubtitle": "Sombra por baixo dos ícones de ficheiros e pastas na vista grelha",
+  "themeIconShadowIntensity": "Intensidade da sombra dos ícones: {percent}%",
+  "@themeIconShadowIntensity": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "themeShadowIntensityRow": "Shadow intensity: {percent}%",
+  "themeFolderIconFolder": "Folder",
+  "themeFolderIconFolderOpen": "Folder open",
+  "themeFolderIconFolderSpecial": "Folder special",
+  "themeFolderIconFolderShared": "Folder shared",
+  "themeFolderIconFolderCopy": "Folder copy",
+  "themeFolderIconFolderDelete": "Folder delete",
+  "themeFolderIconFolderZip": "Folder zip",
+  "themeFolderIconFolderOff": "Folder off",
+  "themeFolderIconFolderPlus": "New folder",
+  "themeFolderIconFolderHome": "Home",
+  "themeFolderIconFolderDrive": "Drive",
+  "themeFolderIconFolderCloud": "Cloud",
+  "propsTitle": "Propriedades",
+  "propsTimeoutLoading": "Timed out loading properties",
+  "propsLoadErrorDetail": "Error loading properties: {detail}",
+  "propsFieldName": "Name",
+  "propsFieldPath": "Path",
+  "propsFieldType": "Type",
+  "propsFieldSize": "Size",
+  "propsFieldSizeOnDisk": "Size on disk",
+  "propsFieldModified": "Modified",
+  "propsFieldAccessed": "Accessed",
+  "propsFieldCreated": "Created",
+  "propsFieldOwner": "Owner",
+  "propsFieldGroup": "Group",
+  "propsFieldPermissions": "Permissions",
+  "propsFieldInode": "Inode",
+  "propsFieldLinks": "Links",
+  "propsFieldFilesInside": "Files inside",
+  "propsFieldDirsInside": "Folders inside",
+  "propsTypeFolder": "Folder",
+  "propsTypeFile": "File",
+  "propsMultiSelectionTitle": "{count, plural, one{1 item selecionado} other{{count} itens selecionados}}",
+  "@propsMultiSelectionTitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "propsMultiTypeMixed": "Seleção mista (ficheiros e pastas)",
+  "propsMultiCombinedSize": "Tamanho total em disco",
+  "propsMultiLoadingSizes": "A calcular tamanhos…",
+  "propsMultiPerItemTitle": "Cada item",
+  "propsMultiCountSummary": "{folderCount} pastas, {fileCount} ficheiros",
+  "@propsMultiCountSummary": {
+    "placeholders": {
+      "folderCount": {
+        "type": "int"
+      },
+      "fileCount": {
+        "type": "int"
+      }
+    }
+  },
+  "propsEditTooltip": "Edit",
+  "propsHintNewValue": "Enter new value",
+  "propsPermissionsDialogTitle": "Edit permissions",
+  "propsPermOwnerSection": "Owner:",
+  "propsPermGroupSection": "Group:",
+  "propsPermOtherSection": "Others:",
+  "propsInvalidPermissionsFormat": "Invalid permissions format",
+  "propsChmodFailed": "Could not change permissions: {detail}",
+  "pkgPageTitle": "Aplicações",
+  "pkgInstallFromFileTooltip": "Install package from file",
+  "pkgFilterAll": "Todas",
+  "pkgSearchHint": "Search applications…",
+  "pkgUninstallTitle": "Confirm uninstall",
+  "pkgUninstallConfirm": "Uninstall {name}?",
+  "pkgUninstallButton": "Uninstall",
+  "pkgDepsTitle": "Dependencies found",
+  "pkgDepsUsedByBody": "This package is used by:\n{list}",
+  "pkgProceedAnyway": "Proceed anyway",
+  "pkgUninstalled": "{name} uninstalled",
+  "pkgUninstallFailed": "Error during uninstall",
+  "pkgInstallDialogTitle": "Install package",
+  "pkgInstallConfirm": "Install \"{name}\"?",
+  "pkgInstallButton": "Install",
+  "pkgInstallProgressTitle": "A instalar pacote",
+  "pkgInstallRunningStatus": "A iniciar o instalador…",
+  "zipProgressPanelTitle": "A comprimir para ZIP",
+  "zipProgressSubtitle": "A adicionar ficheiros ao arquivo",
+  "zipProgressEncoding": "A escrever arquivo…",
+  "pkgExecutableMade": "{name} is now executable",
+  "pkgUnsupportedPackage": "Unsupported package format",
+  "pkgInstalledSuccess": "{name} installed successfully",
+  "pkgInstallFailedWithError": "Install error: {detail}",
+  "updateTitle": "Atualizações",
+  "updateTitleWithCount": "Atualizações ({count})",
+  "updateInstallAll": "Install all",
+  "updateNoneAvailable": "No updates available",
+  "updateTypeLine": "Type: {type}",
+  "updateCurrentVersionLine": "Current version: {v}",
+  "updateAvailableVersionLine": "Available version: {v}",
+  "updateInstallTooltip": "Install update",
+  "updateUpdatedSuccess": "{name} updated successfully",
+  "updateOneFailed": "Error updating {name}",
+  "updateInstallAllTitle": "Install all updates",
+  "updateInstallAllBody": "Install {count} updates?",
+  "updateAllSuccess": "All updates installed successfully",
+  "updateAllFailed": "Error installing updates",
+  "searchDialogTitle": "Encontrar ficheiros",
+  "searchPathLabel": "Caminho: {path}",
+  "@searchPathLabel": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "searchSelectDiskTooltip": "Select drive",
+  "searchAllMountsLabel": "Pesquisar em todos os volumes montados",
+  "searchAllMountsHint": "USB, partições extra, GVFS/rede (se acessível). Mais lento do que uma pasta única.",
+  "searchAllMountsActive": "A pesquisar em {count} localizações (todos os mounts)",
+  "@searchAllMountsActive": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchPathCurrentMenu": "Current path",
+  "searchPathRootMenu": "Raiz do sistema de ficheiros",
+  "searchLabelQuery": "Search",
+  "searchHintQuery": "File name, *.mp4, *.txt…",
+  "searchHelperPatterns": "Patterns: *.mp4, *.txt, document*.pdf",
+  "searchLabelNameFilter": "Name filter",
+  "searchHintNameFilter": "e.g. document",
+  "searchLabelExtension": "Extension",
+  "searchHintExtension": "e.g. pdf",
+  "searchLabelSizeMin": "Min size (bytes)",
+  "searchLabelSizeMax": "Max size (bytes)",
+  "searchLabelFileType": "File type",
+  "searchLabelDateFilter": "Date filter",
+  "searchIncludeSystemFiles": "Include system files",
+  "searchChoosePath": "Choose path",
+  "searchStop": "Stop",
+  "searchSearchButton": "Search",
+  "searchNoCriteriaSnack": "Enter at least one search criterion",
+  "searchError": "Search error: {error}",
+  "@searchError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "searchNoResults": "Sem resultados",
+  "searchResultsOne": "1 result found",
+  "searchResultsMany": "{count} results found",
+  "searchTooltipViewList": "Lista",
+  "searchTooltipViewGrid": "Grelha",
+  "searchTooltipViewDetails": "Detalhes",
+  "searchZoomOut": "Zoom out",
+  "searchZoomIn": "Zoom in",
+  "searchTypeAll": "All",
+  "searchTypeImages": "Images",
+  "searchTypeVideo": "Video",
+  "searchTypeAudio": "Audio",
+  "searchTypeDocuments": "Documents",
+  "searchTypeArchives": "Archives",
+  "searchTypeExecutables": "Executables",
+  "searchDateAll": "Any time",
+  "searchDateToday": "Today",
+  "searchDateWeek": "Last week",
+  "searchDateMonth": "Last month",
+  "searchDateYear": "Last year",
+  "statusDiskPercent": "{value}%",
+  "@themeAppliedSnackbar": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@themeFontSizeRow": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "@themeShadowIntensityRow": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "@propsLoadErrorDetail": {
+    "placeholders": {
+      "detail": {
+        "type": "String"
+      }
+    }
+  },
+  "@propsChmodFailed": {
+    "placeholders": {
+      "detail": {
+        "type": "String"
+      }
+    }
+  },
+  "@pkgUninstallConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@pkgDepsUsedByBody": {
+    "placeholders": {
+      "list": {
+        "type": "String"
+      }
+    }
+  },
+  "@pkgInstalledSuccess": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@pkgInstallFailedWithError": {
+    "placeholders": {
+      "detail": {
+        "type": "String"
+      }
+    }
+  },
+  "@pkgInstallConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@pkgExecutableMade": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@updateTitleWithCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@updateUpdatedSuccess": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@updateOneFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@updateInstallAllBody": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@updateTypeLine": {
+    "placeholders": {
+      "type": {
+        "type": "String"
+      }
+    }
+  },
+  "@updateCurrentVersionLine": {
+    "placeholders": {
+      "v": {
+        "type": "String"
+      }
+    }
+  },
+  "@updateAvailableVersionLine": {
+    "placeholders": {
+      "v": {
+        "type": "String"
+      }
+    }
+  },
+  "@searchResultsMany": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@statusDiskPercent": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "depsDialogTitle": "Componentes do sistema",
+  "depsDialogIntro": "Faltam os seguintes componentes. Pode instalá-los agora com a palavra-passe de administrador (PolicyKit).",
+  "depsInstallButton": "Instalar agora (palavra-passe admin)",
+  "depsContinueButton": "Continuar sem instalar",
+  "depsInstalling": "A instalar pacotes…",
+  "depsInstallSuccess": "Instalação concluída.",
+  "depsInstallFailed": "Falha na instalação: {message}",
+  "@depsInstallFailed": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "depsUnknownDistro": "Instalação automática indisponível para esta distribuição. Instale os pacotes manualmente num terminal.",
+  "depsManualCommandLabel": "Comando sugerido",
+  "depsPkexecNotFound": "pkexec não encontrado. Execute no terminal:",
+  "depsRustUnavailable": "Biblioteca nativa (Rust) não carregada. A cópia pode ser mais lenta. Reinstale a aplicação se persistir.",
+  "depLabelXdgOpen": "xdg-open — abrir ficheiros com aplicações predefinidas",
+  "depLabelMountCifs": "mount.cifs — montar partilhas SMB (cifs-utils)",
+  "depsCifsInstallTitle": "Instalar cifs-utils?",
+  "depsCifsInstallBody": "Para montar partilhas SMB é necessário o mount.cifs do pacote cifs-utils. Instalar agora com o gestor de pacotes (palavra-passe de administrador)?",
+  "depLabelSmbclient": "smbclient — explorar partilhas SMB/CIFS",
+  "depLabelNmblookup": "nmblookup — encontrar computadores na LAN (NetBIOS)",
+  "depLabelAvahiBrowse": "avahi-browse — descoberta de rede (mDNS)",
+  "depLabelAvahiResolve": "avahi-resolve-address — resolve nomes de anfitrião na LAN (mDNS)",
+  "depsNetworkBannerHint": "Faltam ferramentas opcionais para encontrar PCs na rede e montar partilhas. Pode instalá-las automaticamente (é necessária palavra-passe de administrador).",
+  "depsNetworkBannerLater": "Agora não",
+  "depsSomeStillMissing": "Ainda faltam ferramentas. Tente o comando de terminal sugerido abaixo.",
+  "depsPolkitAuthFailed": "A autenticação de administrador foi cancelada ou recusada, ou o pkexec não conseguiu executar o instalador.",
+  "depsInstallOutputIntro": "Saída do gestor de pacotes:",
+  "depsInstallUnexpected": "erro inesperado",
+  "depsDialogIntroRustOnly": "A aceleração nativa para algumas operações em ficheiros não está disponível (biblioteca Rust).",
+  "depsDialogIntroToolsOk": "As ferramentas de linha de comandos necessárias estão instaladas.",
+  "depsCloseButton": "Fechar",
+  "computerTitle": "Computador",
+  "computerOnDevice": "Neste dispositivo",
+  "computerNetworks": "Rede",
+  "computerNoVolumes": "Nenhum volume encontrado",
+  "computerNoServers": "Nenhum servidor encontrado",
+  "computerTools": "Ferramentas",
+  "computerToolFindFiles": "Encontrar ficheiros e pastas",
+  "computerToolPackages": "Desinstalar/Instalar apps",
+  "computerToolSystemUpdates": "Procurar atualizações do sistema",
+  "computerRefresh": "Atualizar",
+  "computerFreeShort": "{size} livres",
+  "@computerFreeShort": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "computerNetworkHint": "Ligue pela barra lateral → Rede: {name}",
+  "@computerNetworkHint": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "computerVolumeOpen": "Abrir",
+  "computerFormatVolume": "Formatar…",
+  "computerFormatTitle": "Formatar volume",
+  "computerFormatWarning": "Todos os dados neste volume serão apagados. Não pode ser anulado.",
+  "computerFormatFilesystem": "Sistema de ficheiros",
+  "computerFormatConfirm": "Formatar",
+  "computerFormatNotSupported": "A formatação neste ecrã só é suportada no Linux com udisks2.",
+  "computerFormatNoDevice": "Não foi possível determinar o dispositivo de blocos.",
+  "computerFormatSystemBlockedTitle": "Não é possível formatar",
+  "computerFormatSystemBlockedBody": "Este é um volume de sistema (raiz, arranque ou o mesmo disco do sistema). Não pode ser formatado aqui.",
+  "computerFormatRunning": "A formatar…",
+  "computerFormatDone": "Formatação concluída.",
+  "computerFormatFailed": "Formatação falhou: {error}",
+  "@computerFormatFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "computerMounting": "A ligar…",
+  "computerMountNoShares": "Nenhuma partilha encontrada. Verifique credenciais, firewall ou SMB.",
+  "computerMountFailed": "Não foi possível montar a partilha. Tente outras credenciais, instale cifs-utils ou verifique as permissões de montagem.",
+  "computerMountMissingGio": "mount.cifs não encontrado. Instale cifs-utils. Pode precisar de root ou entradas em /etc/fstab.",
+  "computerMountNeedPassword": "Esta partilha precisa de utilizador e palavra-passe. Ligue-se de novo e introduza as credenciais.",
+  "networkRememberPassword": "Memorizar credenciais para este computador (armazenamento seguro)",
+  "dialogRootPasswordTitle": "Palavra-passe de administrador",
+  "dialogRootPasswordLabel": "Palavra-passe para sudo",
+  "computerSelectShare": "Selecionar partilha",
+  "computerConnect": "Ligar",
+  "computerCredentialsTitle": "Início de sessão de rede",
+  "computerUsername": "Utilizador",
+  "computerPassword": "Palavra-passe",
+  "computerDiskProperties": "Propriedades",
+  "diskPropsOpenInDisks": "Abrir em Discos",
+  "diskPropsFsUnknown": "Sistema de ficheiros desconhecido",
+  "diskPropsFsLine": "Sistema de ficheiros {type}",
+  "@diskPropsFsLine": {
+    "placeholders": {
+      "type": {
+        "type": "String"
+      }
+    }
+  },
+  "diskPropsTotalLine": "Total: {size}",
+  "@diskPropsTotalLine": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "diskPropsUsedLine": "Usado: {size}",
+  "@diskPropsUsedLine": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "diskPropsFreeLine": "Livre: {size}",
+  "@diskPropsFreeLine": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "diskPropsFileAccessRow": "Acesso a ficheiros",
+  "snackExternalDropDone": "Operação nos itens largados concluída.",
+  "snackDropUnreadable": "Não foi possível ler os ficheiros largados.",
+  "snackOpenAsRootLaunched": "Janela de administrador iniciada (separada desta).",
+  "computerNetworkIpLine": "IP: {ip}",
+  "@computerNetworkIpLine": {
+    "placeholders": {
+      "ip": {
+        "type": "String"
+      }
+    }
+  }
+}
