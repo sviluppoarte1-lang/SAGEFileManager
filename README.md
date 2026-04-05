@@ -66,34 +66,6 @@ Built-in preview for:
 - Linux (tested on Debian/Ubuntu/Linux Mint)
 - Appropriate permissions for file and system operations
 
-## Installation (from source)
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/sviluppoarte1-lang/SAGEFileManager.git
-cd SAGEFileManager
-```
-
-2. Install Flutter dependencies:
-
-```bash
-flutter pub get
-```
-
-3. Build the Rust components (if required by your setup):
-
-```bash
-cd rust
-cargo build --release
-cd ..
-```
-
-4. Run the app:
-
-```bash
-flutter run -d linux
-```
 
 ### Debian/Ubuntu package
 
