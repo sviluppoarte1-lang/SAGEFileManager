@@ -2,6 +2,7 @@
 
 Version 1.3.0 
 Navigation & Toolbar Redesign 
+
 Complete 3D depth redesign of the navigation bar: multi-layer shadows (ambient 48px + directional 28px + contact 8px + primary glow
 20px), vertical gradient (95%→72% opacity), 2px primary accent bottom border, 18px border radius
 Replaced icon fonts with custom 32×32 PNG assets for all toolbar buttons (back, forward, up, list, grid, details, columns, search)
@@ -17,16 +18,21 @@ Fixed StreamSubscription leak in package_manager.dart — subscriptions now canc
 Created AppProcess wrapper (lib/services/process_helper.dart) with default 2-minute timeout; applied to all 195 Process.run
 calls across 17 files
 Added .timeout() to SMB exitCode awaits (5–10 min) to prevent hanging on unresponsive shares 
+
 SMB / Network Transfers 
+
 Fixed pre-existing content inflating progress: upload and download operations now measure baseline destination size before starting and
 subtract it from each poll result
 Fixed parallel SMB upload race condition: source sizes are pre-calculated sequentially before Future.wait() so each parallel upload
 receives its correct cumulative progressBaseBytes 
+
 Progress & Localization 
 Fixed multi-transfer progress cross-talk: global _copyProgress.stats is no longer the source of per-operation progress values
 Replaced hardcoded 'Copying…' English string in transfer_dialog.dart with localized l10n.copyProgressTitle /
 l10n.deleteProgressTitle 
+
 Theme & UI 
+
 Added system theme auto-detection on first launch (lib/services/system_theme_detector.dart) supporting GNOME, KDE, XFCE,
 and GTK-based desktops
 Consolidated duplicate parseDuFirstColumnBytes and diskUsageBytesOne functions into lib/utils/file_utils.dart
@@ -34,12 +40,11 @@ Removed redundant “>” chevron from View menu button and custom submenu items
 Enhanced GlassWrapper with optional gradient, border, and boxShadow parameters
 Removed duplicate imports in file_list.dart 
 Under the Hood 
+
 All Process.run calls now pass through AppProcess.run with configurable timeout
 Shared utility functions return int? (null = not found), matching existing caller conventions
 Theme auto-detection is only performed on first launch; the result is persisted in settings
 Pre-existing file sizes are measured sequentially before parallel uploads to avoid data races
-
-A full-featured Linux file manager in the spirit of Nemo-style desktop file managers, built with Flutter and Rust.
 
 **Official repository:** [https://github.com/sviluppoarte1-lang/SAGEFileManager](https://github.com/sviluppoarte1-lang/SAGEFileManager)
 
