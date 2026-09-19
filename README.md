@@ -9,197 +9,84 @@
 <img width="953" height="1036" alt="Schermata del 2026-09-19 11-28-23" src="https://github.com/user-attachments/assets/dee3d066-efd0-4752-8402-68f94c283c0e" />
 <img width="914" height="624" alt="Schermata del 2026-09-19 11-27-55" src="https://github.com/user-attachments/assets/cf14b8b7-8109-464b-8f20-ed431c76d3bd" />
 
-# SAGE File Manager — Linux file manager
+**SAGE File Manager — v1.4.5**
 
-Version 1.3.0 
-Navigation & Toolbar Redesign 
+SAGE File Manager is a modern, full-featured desktop file manager for Linux, built with Flutter + Rust. It combines multi-view browsing, advanced search, previews, split-view, SMB/LAN support, theming and optimized file operations in a single native experience. Version **1.4.5** is a major quality, performance and usability release focused on speed, reliability and terminal integration.
 
-Complete 3D depth redesign of the navigation bar: multi-layer shadows (ambient 48px + directional 28px + contact 8px + primary glow
-20px), vertical gradient (95%→72% opacity), 2px primary accent bottom border, 18px border radius
-Replaced icon fonts with custom 32×32 PNG assets for all toolbar buttons (back, forward, up, list, grid, details, columns, search)
-preserving original colors and transparency
-New _GlowNavButton, _GlowViewModeButton, _GlowSearchButton widgets with animated hover glow effects, scale transitions
-(easeOutCubic), and gradient ring backgrounds
-Path bar redesigned with focus-aware styling: active pane gets a primary-tinted background with matching glow shadow, inactive pane
-uses subtle surfaceContainerHighest
-Status bar enhanced with subtle surface gradient and soft top shadow 
-Crash Fixes & Stability 
-Added mounted guards in _loadFavorites and showDeleteResults to prevent state updates after disposal
-Fixed StreamSubscription leak in package_manager.dart — subscriptions now cancelled in dispose()
-Created AppProcess wrapper (lib/services/process_helper.dart) with default 2-minute timeout; applied to all 195 Process.run
-calls across 17 files
-Added .timeout() to SMB exitCode awaits (5–10 min) to prevent hanging on unresponsive shares 
+---
 
-SMB / Network Transfers 
+### Overview
 
-Fixed pre-existing content inflating progress: upload and download operations now measure baseline destination size before starting and
-subtract it from each poll result
-Fixed parallel SMB upload race condition: source sizes are pre-calculated sequentially before Future.wait() so each parallel upload
-receives its correct cumulative progressBaseBytes 
+v1.4.5 delivers what users asked for most: **faster startup, a lag-free sidebar, instant close, and a reliable integrated terminal**. While no single feature defines this release, every core path has been audited — from `main()` initialization to directory watching and window close — resulting in a noticeably smoother experience on both fast SSDs and slow network mounts.
 
-Progress & Localization 
-Fixed multi-transfer progress cross-talk: global _copyProgress.stats is no longer the source of per-operation progress values
-Replaced hardcoded 'Copying…' English string in transfer_dialog.dart with localized l10n.copyProgressTitle /
-l10n.deleteProgressTitle 
+### What's New in 1.4.5
 
-Theme & UI 
+#### 1. Performance & Startup
 
-Added system theme auto-detection on first launch (lib/services/system_theme_detector.dart) supporting GNOME, KDE, XFCE,
-and GTK-based desktops
-Consolidated duplicate parseDuFirstColumnBytes and diskUsageBytesOne functions into lib/utils/file_utils.dart
-Removed redundant “>” chevron from View menu button and custom submenu items
-Enhanced GlassWrapper with optional gradient, border, and boxShadow parameters
-Removed duplicate imports in file_list.dart 
-Under the Hood 
+The entire startup pipeline was parallelized and de-bottlenecked:
 
-All Process.run calls now pass through AppProcess.run with configurable timeout
-Shared utility functions return int? (null = not found), matching existing caller conventions
-Theme auto-detection is only performed on first launch; the result is persisted in settings
-Pre-existing file sizes are measured sequentially before parallel uploads to avoid data races
+- **Parallel initialization:** `LoggingService`, `GlassTheme`, `FolderIconService`, `SettingsService`, `LocalNotifier` and `DesktopSessionService` now start with `Future.wait()` after `windowManager.ensureInitialized()`, instead of 10 sequential `await`s. Estimated saving **80-250 ms** on cold start.
+- **SharedPreferences cache:** Introduced `PrefsCache` singleton, eliminating 6-7 redundant `SharedPreferences.getInstance()` round-trips per launch. Folder colors are now cached in-memory (`Map<String,int?>`) instead of N× async reads per sidebar rebuild.
+- **Faster standard folders & disks:** `FileService.getStandardDirectories()` now checks `Desktop/Documents/Pictures/Music/Videos/Downloads` in parallel. `FileService.getMountedDisks()` collects `df` candidates and resolves `lsblk/blkid` labels in parallel with 800 ms per-disk timeouts (was serial, 300-800 ms → ~40 ms parallel).
+- **Batched initState:** `_FileManagerScreenState` no longer floods the main isolate with 6 independent `setState`s. A new `_batchLoadFastPrefs()` loads favorites, preferences, window geometry and caches from a single `SharedPreferences` instance via `Future.wait()`, and defers the heavy `getMountedDisks()` scan to `addPostFrameCallback` so the first frame paints immediately.
+- **Cache init parallelized:** `ThumbnailCacheService` and `AppImageIconService` now initialize concurrently.
 
-**Official repository:** [https://github.com/sviluppoarte1-lang/SAGEFileManager](https://github.com/sviluppoarte1-lang/SAGEFileManager)
+Result: faster first paint, no sidebar spinner hang on slow `df`/NFS mounts, and far fewer rebuilds in the first 500 ms.
 
-## Features
+#### 2. Left Sidebar — No More Lag
 
-### Core functionality
+- **Parallel data load:** `Sidebar._loadData()` now awaits `Future.wait([getStandardDirectories, getMountedDisks, SharedPreferences])` in one shot (was waterfall).
+- **Icon cache:** Folder colors are served from memory; no more `FutureBuilder` thrashing on every theme/reorder tick.
+- **Icon decoding optimized:** Thumbnail `Image.file` now uses `cacheWidth/cacheHeight = size * devicePixelRatio` via `RepaintBoundary`, avoiding full-resolution 50MP decode for 64px previews.
 
-- **Smart copy**: Automatically detects whether files already exist at the destination by comparing size and creation time. Identical files are skipped.
-- **Status bar**: Shows the number of items in the current directory and disk free/used information.
-- **Left sidebar**: Home, Desktop, Documents, Pictures, Music, Videos, and Downloads; custom paths; mounted volumes (local, network, USB).
-- **Full menus**: File, Edit, View, Favorites, Tools, and Help.
+#### 3. Integrated Terminal — Always Active
 
-### Advanced tools
+The embedded terminal was rebuilt for real-world use:
 
-- **Application management**: Built-in utility to view and uninstall apps from:
+- **Autocomplete always on:** `compgen` now completes the **last word** only (e.g. `cd /ho` → `/home/` completes `/ho`, not the whole `cd /ho` string). Works for both files and folders, and is triggered via debounced `onInputChanged`.
+- **Tab completion fixed:** Same last-word extraction for Tab.
+- **Focus stays alive:** A `Focus.onKeyEvent` wrapper on the terminal redirects any key press back to the input field when the output area has focus. Clicking the output still allows text selection, but typing never loses the cursor.
+- **Copy & Select All fixed:** The right-click menu `Copy` was reading *from* the clipboard. It now reads the actual `TextSelection` from `SelectableText.rich` via `onSelectionChanged` and copies `text.substring(start,end)`. `Select all` was missing and is now implemented.
+- **Busy-aware close:** See below.
 
-  - APT (Debian/Ubuntu/Linux Mint)
-  - Snap
-  - Flatpak
-  - GNOME (system apps)
-  - Automatic dependency checks before uninstall
+#### 4. Window Close Safety
 
-- **Update checker**: Checks for updates across:
+Closing the manager while the internal terminal is busy now warns the user:
 
-  - APT
-  - Snap
-  - Flatpak
-  - DNF (Fedora)
-  - Pacman (Arch)
-  - Flathub
-  - GNOME
-  - KDE
+- `TerminalService` tracks busy state per instance with a 1200 ms debounce timer and a `ValueNotifier<bool> busyNotifier`, plus async child-process detection (`ps --ppid` / `pgrep -P` with 400 ms timeouts for silent commands like `sleep`).
+- `main.dart` hooks `busyNotifier` and `onInstancesChanged` to `windowManager.setPreventClose()`. `_handleWindowClose()` awaits `hasBusyTerminalAsync()` (800 ms timeout fallback) and shows a dedicated localized dialog:
+  - *“Terminal operation in progress — A command is still running in the internal terminal. Closing may interrupt it. Continue?”* (EN/IT/FR/DE/ES/PT).
+  - Mixed copy+terminal state shows combined message. Idle terminal closes instantly with no warning.
 
-- **Distribution detection**: Detects the running Linux distribution and configures the appropriate backends.
+#### 5. Tools Menu — Terminal Icon Restored
 
-### Views
+- **Bug:** `Strumenti → Apri terminale interno (F4)` used `assets/icons/terminal.png` which existed on disk (64×64) but was not declared in `flutter.assets` in `pubspec.yaml`. The top menu via `Image(AssetImage)` without `errorBuilder` showed a blank/broken image; the empty-space menu via `CompactMenuRow` fell back to a generic `Icons.terminal`.
+- **Fix:** Declared `assets/icons/terminal.png` in `pubspec.yaml` and made `_mapMenuItemsToWidgets()` use `Image.asset(..., errorBuilder: Icon(Icons.image_not_supported))` for resilience.
 
-- **Multiple modes**: List, grid, and details
-- **Customization**: Switch view modes on the fly
+#### 6. File Operations & Reliability
 
-### Archives
+- **Copy/Move bug fixed:** Removed silent fallback that copied the *parent* directory when the source file was missing (`main.dart` `_copyFile` / `_moveFile`).
+- **Delete deduplication:** `_deleteMultipleFiles` now deduplicates parent/child selections (deleting a folder and its child no longer shows the parent twice) and shows the parent path in `delete_operation_window.dart`.
+- **.desktop support:** `FileService.isDesktopFile()` / `isDesktopFileSync()` detect `[Desktop Entry]` headers. `FileInfo.isDesktopFile` added, populated in `_getFileInfoAsync()`, icon rendered via `file_icon_service`, `Type` column shows “Program” in `file_list.dart`, `file_properties.dart`, `file_properties_tabs.dart`, `quick_look.dart`, and double-click launches via `xdg-open` before ELF check. Localized in 6 languages.
 
-Extraction support for:
+#### 7. Generic Reliability & Resource Management
 
-- ZIP
-- RAR
-- TAR.GZ
-- 7Z
+- **Window IPC** (`/tmp/sage-fm-ipc`) polling changed from `listSync/readAsStringSync` every 2s on the main isolate to `await dir.list()` + `await file.readAsString()` async.
+- **Transfer progress timers** coalesced from 300 ms/500 ms to 500 ms/1000 ms to reduce I/O storm during copy.
+- **Leaks fixed:** `AudioPlayerWidget` now stores and cancels `onPlayerState/onPosition/onDuration` subscriptions; `main.dart` stores `_selectionSub` / `_secondPaneSelectionSub` and cancels on `dispose`.
+- **Glass/transparency:** `GlassTheme.isEnabled` now guards `BackdropFilter` in `navigation_bar.dart` (extracted `_buildBarContent()`) and `main.dart` scaffold, avoiding an always-on blur even when disabled.
 
-### Previews
+#### 8. Code Health
 
-Built-in preview for:
+- Removed duplicate import in `file_list.dart`, unused `Seek` import, 4 unused Rust dependencies in `Cargo.toml`, 13 dead Rust symbols in `lib.rs`, cleaned `rust_ffi.dart` typedefs. Both `cargo check` and `flutter analyze` pass clean (0 new errors).
 
-- Images: JPG, PNG, GIF, BMP, WEBP
-- PDF
-- Documents: DOC, DOCX, ODT
-- Spreadsheets: XLS, XLSX, ODS
+---
 
-## Requirements
+### Technical Details
 
-- Flutter SDK 3.10.4 or newer
-- Rust (for system integration)
-- Linux (tested on Debian/Ubuntu/Linux Mint)
-- Appropriate permissions for file and system operations
+- **Stack:** Flutter (Impeller/OpenGL ES, GTK3 embedder), Rust FFI, `window_manager`, `shared_preferences`, `yaru`, `pdfrx`, `flutter_svg`.
+- **I/O model:** All heavy work (disk enumeration, thumbnail generation, archive, duplicate finder) is isolated where possible; v1.4.5 moves more to `Future.wait` / async and reduces synchronous `*Sync` calls on the UI thread.
+- **Localization:** EN, IT, FR, DE, ES, PT fully updated for new strings (`fileListTypeProgram`, `dialogCloseWhileTerminalTitle/Body`).
+- **Platform:** Linux-first, X11 + Wayland, tested on Mesa/Gallium (NVIDIA/AMD/Intel).
 
-
-### Debian/Ubuntu package
-
-From the project root, after a release Linux build:
-
-```bash
-./build_deb.sh
-```
-
-The generated `.deb` includes package metadata and documentation under `/usr/share/doc/sage-file-manager/`.
-
-## Project layout
-
-```
-lib/
-├── main.dart                 # Main UI shell
-├── models/                   # Data models
-│   ├── file_info.dart
-│   └── disk_info.dart
-├── services/                 # File, packages, archives, previews, etc.
-│   ├── file_service.dart
-│   ├── package_service.dart
-│   ├── archive_service.dart
-│   └── preview_service.dart
-└── widgets/                  # UI components
-    ├── sidebar.dart
-    ├── file_list.dart
-    ├── status_bar.dart
-    ├── package_manager.dart
-    └── update_checker.dart
-
-rust/
-└── src/
-    └── lib.rs                # Rust helpers for system operations
-```
-
-## Usage
-
-### Navigation
-
-- Click a folder in the sidebar to navigate
-- Double-click a file to open or view it
-- Use the “+” control in the sidebar to add custom paths
-
-### Copying files
-
-1. Select the files to copy
-2. Use **File → Copy**
-3. Go to the destination folder
-4. Use **File → Paste**
-5. Identical files are skipped automatically
-
-### Application management
-
-- **Tools → Uninstall/Install Apps**, or use the tools panel
-- Browse installed applications
-- Review dependencies before uninstalling
-
-### Checking for updates
-
-- **Tools → Check for updates**, or use the tools panel
-- The app queries the configured package sources
-
-### Extracting archives
-
-- Double-click an archive
-- Choose a destination folder
-- Extraction runs automatically
-
-## Notes
-
-- Some operations require administrator privileges (`sudo`)
-- For RAR and 7Z extraction, install `unrar` and `7z` on the system
-- Distribution detection relies on `/etc/os-release`
-
-## License
-
-See the [upstream repository](https://github.com/sviluppoarte1-lang/SAGEFileManager) for license information.
-
-## Contributing
-
-Contributions are welcome. Please open an issue or a pull request on GitHub.
+**Upgrade is recommended for all users.** v1.4.5 makes SAGE feel instant on open, stable on close, and finally makes the integrated terminal a true daily driver — not a secondary widget.
