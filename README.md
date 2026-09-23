@@ -1,3 +1,15 @@
+<img width="953" height="1036" alt="Schermata del 2026-09-19 11-31-26" src="https://github.com/user-attachments/assets/b4bfc43e-7f54-403b-b8e7-a29a5ad9ef0c" />
+<img width="953" height="1036" alt="Schermata del 2026-09-19 11-31-11" src="https://github.com/user-attachments/assets/9b411531-efa2-4e6a-a679-278eeb0761de" />
+<img width="953" height="1036" alt="Schermata del 2026-09-19 11-30-48" src="https://github.com/user-attachments/assets/db0e110e-98ef-4848-ad36-fc3c5a7e5b18" />
+<img width="953" height="1036" alt="Schermata del 2026-09-19 11-30-15" src="https://github.com/user-attachments/assets/134e5602-2ae9-410d-a37e-81115427453f" />
+<img width="953" height="1036" alt="Schermata del 2026-09-19 11-29-47" src="https://github.com/user-attachments/assets/34563e0e-9f6c-49fc-938c-b2f620db3fd2" />
+<img width="953" height="1036" alt="Schermata del 2026-09-19 11-29-00" src="https://github.com/user-attachments/assets/6c76f0a7-9354-4781-9061-d1482c14a0a0" />
+<img width="953" height="1036" alt="Schermata del 2026-09-19 11-28-39" src="https://github.com/user-attachments/assets/c3f78ec5-9f69-4449-aa97-a38c28261d3d" />
+<img width="953" height="1036" alt="Schermata del 2026-09-19 11-28-23" src="https://github.com/user-attachments/assets/dee3d066-efd0-4752-8402-68f94c283c0e" />
+<img width="914" height="624" alt="Schermata del 2026-09-19 11-27-55" src="https://github.com/user-attachments/assets/cf14b8b7-8109-464b-8f20-ed431c76d3bd" />
+<img width="1914" height="1034" alt="Schermata del 2026-09-19 11-27-33" src="https://github.com/user-attachments/assets/f0c952d4-cb55-43a1-ad5b-984a5151be9f" />
+<img width="1397" height="1034" alt="Schermata del 2026-09-19 11-27-06" src="https://github.com/user-attachments/assets/c60e0f89-f96f-4275-b0b2-1da38a30ea6c" />
+
 # SAGE File Manager
 
 Full-featured desktop file manager for Linux — Flutter + Rust. Dual-pane, SMB/CIFS, FTP, NFS, trash, previews, archives, and themes.
