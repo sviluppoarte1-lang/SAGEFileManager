@@ -1,92 +1,94 @@
+# SAGE File Manager
 
-<img width="953" height="1036" alt="Schermata del 2026-09-19 11-31-26" src="https://github.com/user-attachments/assets/b4bfc43e-7f54-403b-b8e7-a29a5ad9ef0c" />
-<img width="953" height="1036" alt="Schermata del 2026-09-19 11-31-11" src="https://github.com/user-attachments/assets/9b411531-efa2-4e6a-a679-278eeb0761de" />
-<img width="953" height="1036" alt="Schermata del 2026-09-19 11-30-48" src="https://github.com/user-attachments/assets/db0e110e-98ef-4848-ad36-fc3c5a7e5b18" />
-<img width="953" height="1036" alt="Schermata del 2026-09-19 11-30-15" src="https://github.com/user-attachments/assets/134e5602-2ae9-410d-a37e-81115427453f" />
-<img width="953" height="1036" alt="Schermata del 2026-09-19 11-29-47" src="https://github.com/user-attachments/assets/34563e0e-9f6c-49fc-938c-b2f620db3fd2" />
-<img width="953" height="1036" alt="Schermata del 2026-09-19 11-29-00" src="https://github.com/user-attachments/assets/6c76f0a7-9354-4781-9061-d1482c14a0a0" />
-<img width="953" height="1036" alt="Schermata del 2026-09-19 11-28-39" src="https://github.com/user-attachments/assets/c3f78ec5-9f69-4449-aa97-a38c28261d3d" />
-<img width="953" height="1036" alt="Schermata del 2026-09-19 11-28-23" src="https://github.com/user-attachments/assets/dee3d066-efd0-4752-8402-68f94c283c0e" />
-<img width="914" height="624" alt="Schermata del 2026-09-19 11-27-55" src="https://github.com/user-attachments/assets/cf14b8b7-8109-464b-8f20-ed431c76d3bd" />
+Full-featured desktop file manager for Linux — Flutter + Rust. Dual-pane, SMB/CIFS, FTP, NFS, trash, previews, archives, and themes.
 
-**SAGE File Manager — v1.4.5**
+![Version](https://img.shields.io/badge/version-1.4.5-blue) ![Flutter](https://img.shields.io/badge/Flutter-3.12-02569B) ![License](https://img.shields.io/badge/license-GPL--3.0-green) ![Platform](https://img.shields.io/badge/platform-Linux-lightgrey)
 
-SAGE File Manager is a modern, full-featured desktop file manager for Linux, built with Flutter + Rust. It combines multi-view browsing, advanced search, previews, split-view, SMB/LAN support, theming and optimized file operations in a single native experience. Version **1.4.5** is a major quality, performance and usability release focused on speed, reliability and terminal integration.
+## Features
 
----
+### File Management
+- **Views:** Grid, List, Details, Columns — adaptive `LayoutBuilder` grid, zoom 1–20 (slider), column-width/icon-size follow zoom
+- **Dual-pane:** Split view with close button, per-pane navigation, drag & drop between panes
+- **Operations:** Copy/Move/Delete with parallel engine (`parallel_copy_engine.dart` + Rust `rayon`/`copy_file_range`), hardlink dedup, skip-identical, `chmod --reference` permission preservation (ext4; best-effort on vfat/ntfs)
+- **Permissions:** Preserved on HDD→HDD/USB copy (mode + timestamps via `chmod --reference`/`setLastModified`/`PermissionsExt::from_mode`)
+- **Progress:** Per-file + total bytes, pause/resume, cancel. USB (`/media`/`/mnt`, `fuseblk` NTFS) now correctly treated as local — `du`/`stat` polling enabled (was misclassified as network → bar stuck at 0%)
+- **Trash:** Move to trash, restore, permanent delete with parent deduplication
+- **Clipboard:** System clipboard `text/uri-list` with `copy`/`cut`/`paste`
 
-### Overview
+### Network
+- **SMB/CIFS:** `smbclient` + `cifs-utils` (`mount.cifs`), credential store (`flutter_secure_storage` 600), polling with `smbclient` `du` fallback
+- **FTP:** `curl`/`lftp` mirror (`FtpService`), virtual `ftp://`/`fm-ftp://` paths
+- **NFS:** `flutter_nfs` user-space mount, `nfs://` virtual paths
+- **Guard:** Network shell paths (`ftp://`, `fm-ftp://`, `fm-smb://`, `nfs://`) never touch local `File("ftp://…")` — prevents `ftp:` relative dir under `/usr/share` (was 11G; now blocked + `Directory.current = HOME`)
 
-v1.4.5 delivers what users asked for most: **faster startup, a lag-free sidebar, instant close, and a reliable integrated terminal**. While no single feature defines this release, every core path has been audited — from `main()` initialization to directory watching and window close — resulting in a noticeably smoother experience on both fast SSDs and slow network mounts.
+### Previews & Thumbnails
+- **Images:** `jpg/jpeg/png/gif/bmp/webp/tiff` — 160px `instantiateImageCodec` thumbnails, `sha256` cache in `getApplicationCacheDirectory()/thumbnails` (`~/.cache/com.sagefile.manager`), 256 MB LRU, 500-entry memory cache
+- **PDF:** `pdfrx` first-page render 220px
+- **Office:** `microsoft_viewer` for doc/xls/ppt, fallback placeholder 1×1 PNG
+- **Resilience:** Cache init probes writability; if `~/.cache` is `root:root` (prior `sudo` run), falls back to `/tmp/sage-thumbnails` so previews never break
+- **UI:** Grid icons shadow-normalized (no `Transform.translate`/3D rotation), fixed `SizedBox` 64px @ zoom 8, 3-line labels
 
-### What's New in 1.4.5
+### Search & Tools
+- **Find Files:** Pattern `*.mp4`, extension/name/size/date/type/system-files filters, streaming `FileSearchService`, all strings localized via `AppLocalizations`
+- **Duplicate Finder / Compare Folders:** `DuplicateFinderScreen` with exact/perceptual/audio modes, `sub_window` isolate
+- **Folder Organizer:** Category-based (`deb/rpm/appimage` etc.)
+- **.deb Installer:** Integrated GUI (replaces `gnome-software`) — `dpkg-deb -f` info, `dpkg-query` installed check, `pkexec dpkg -i` + `apt-get install -f -y` fallback, live log. Trigger: double-click `.deb` or right-click → *Installa pacchetto*. Dialog is `showGeneralDialog` draggable (`Stack`+`Positioned`+`onPanUpdate`, clamp, `drag_indicator`)
 
-#### 1. Performance & Startup
+### Terminal
+- **Integrated terminal** (`integrated_terminal.dart` + `terminal_service.dart`): `script -qfec 'bash --login -i'` via `Process.start`, 45ms debounced `outputController`, `MaxOutputLines 500`
+- **LED:** Prompt-driven (`pendingCommands` counter + `_endsWithShellPrompt` detecting `user@host:/path$ `), not timer — green LED on at `sendCommand`, off only when prompt returns (no 300ms/1200ms debounce)
+- **Password:** `passwordProbe` detects `password:`/`passphrase:` prompts
 
-The entire startup pipeline was parallelized and de-bottlenecked:
+### UI & Localization
+- **Languages:** `en`/`it`/`fr`/`es`/`pt`/`de` via `lib/l10n/*.arb` + `flutter gen-l10n`; default `en`; wizard Next/Back localized
+- **Themes:** `Yaru` + `Catppuccin Mocha` dark, glass `BackdropFilter` / `GlassWrapper`, system theme auto-detect (GNOME/KDE/XFCE)
+- **Sidebar:** `SliverReorderableList` with `ReorderableDelayedDragStartListener` (tap not swallowed by `ImmediateMultiDrag`), `contentPadding vertical:4` (was 2 + `compact` → 36px → 44px), `HitTestBehavior` fixed
+- **Window:** `window_manager` transparent/hidden title bar when glass enabled; sub-windows (`transfer_operation_window`, `duplicate_finder`, `file_search`) read `SharedPreferences(language)` — no longer platform locale mismatch
 
-- **Parallel initialization:** `LoggingService`, `GlassTheme`, `FolderIconService`, `SettingsService`, `LocalNotifier` and `DesktopSessionService` now start with `Future.wait()` after `windowManager.ensureInitialized()`, instead of 10 sequential `await`s. Estimated saving **80-250 ms** on cold start.
-- **SharedPreferences cache:** Introduced `PrefsCache` singleton, eliminating 6-7 redundant `SharedPreferences.getInstance()` round-trips per launch. Folder colors are now cached in-memory (`Map<String,int?>`) instead of N× async reads per sidebar rebuild.
-- **Faster standard folders & disks:** `FileService.getStandardDirectories()` now checks `Desktop/Documents/Pictures/Music/Videos/Downloads` in parallel. `FileService.getMountedDisks()` collects `df` candidates and resolves `lsblk/blkid` labels in parallel with 800 ms per-disk timeouts (was serial, 300-800 ms → ~40 ms parallel).
-- **Batched initState:** `_FileManagerScreenState` no longer floods the main isolate with 6 independent `setState`s. A new `_batchLoadFastPrefs()` loads favorites, preferences, window geometry and caches from a single `SharedPreferences` instance via `Future.wait()`, and defers the heavy `getMountedDisks()` scan to `addPostFrameCallback` so the first frame paints immediately.
-- **Cache init parallelized:** `ThumbnailCacheService` and `AppImageIconService` now initialize concurrently.
+### Packaging
+- **Deb:** `build_deb.sh` → `/usr/bin/sage-file-manager` now `cd "$HOME" || cd /tmp` + `exec /usr/share/...` (was `cd /usr/share` → relative `ftp:` bug), `LD_LIBRARY_PATH` for `libfilemanager_rust.so`
+- **AppImage:** `build_appimage.sh` via `appimagetool`
+- **Install docs:** `LICENSE` GPL-3.0, `README.md`, `com.sagefile.manager.desktop`
 
-Result: faster first paint, no sidebar spinner hang on slow `df`/NFS mounts, and far fewer rebuilds in the first 500 ms.
+## Installation
 
-#### 2. Left Sidebar — No More Lag
+### From .deb
+```bash
+./build_deb.sh
+sudo dpkg -i build/deb/sage-file-manager_1.4.5_amd64.deb
+```
 
-- **Parallel data load:** `Sidebar._loadData()` now awaits `Future.wait([getStandardDirectories, getMountedDisks, SharedPreferences])` in one shot (was waterfall).
-- **Icon cache:** Folder colors are served from memory; no more `FutureBuilder` thrashing on every theme/reorder tick.
-- **Icon decoding optimized:** Thumbnail `Image.file` now uses `cacheWidth/cacheHeight = size * devicePixelRatio` via `RepaintBoundary`, avoiding full-resolution 50MP decode for 64px previews.
+### AppImage
+```bash
+./build_appimage.sh
+./build/sage-file-manager-1.4.5-x86_64.AppImage
+```
 
-#### 3. Integrated Terminal — Always Active
+### From source
+```bash
+flutter pub get
+cargo build --release --manifest-path rust/Cargo.toml
+cp rust/target/release/libfilemanager_rust.so build/linux/x64/release/bundle/lib/
+flutter build linux
+./build/linux/x64/release/bundle/sage-file-manager
+```
 
-The embedded terminal was rebuilt for real-world use:
+Dependencies: `libgtk-3-0 libsecret-1-0 libnotify4 libgdk-pixbuf2.0-0 libblkid1 liblzma5` · Recommends: `cifs-utils avahi-utils smbclient samba-common-bin` · Build: `ninja clang pkg-config libgtk-3-dev libsecret-1-dev libnotify-dev libgstreamer1.0-dev`
 
-- **Autocomplete always on:** `compgen` now completes the **last word** only (e.g. `cd /ho` → `/home/` completes `/ho`, not the whole `cd /ho` string). Works for both files and folders, and is triggered via debounced `onInputChanged`.
-- **Tab completion fixed:** Same last-word extraction for Tab.
-- **Focus stays alive:** A `Focus.onKeyEvent` wrapper on the terminal redirects any key press back to the input field when the output area has focus. Clicking the output still allows text selection, but typing never loses the cursor.
-- **Copy & Select All fixed:** The right-click menu `Copy` was reading *from* the clipboard. It now reads the actual `TextSelection` from `SelectableText.rich` via `onSelectionChanged` and copies `text.substring(start,end)`. `Select all` was missing and is now implemented.
-- **Busy-aware close:** See below.
+## Usage
 
-#### 4. Window Close Safety
+Double-click folder to navigate, file to open via `xdg-open`/`DesktopLauncherService`; right-click for *Copy/Move/Compress/Extract/Installa pacchetto/Properties*; `F1` Find Files; split view via toolbar; terminal at bottom (`Type a command...`); `.deb` double-click → draggable installer dialog (move via header).
 
-Closing the manager while the internal terminal is busy now warns the user:
+## Development
 
-- `TerminalService` tracks busy state per instance with a 1200 ms debounce timer and a `ValueNotifier<bool> busyNotifier`, plus async child-process detection (`ps --ppid` / `pgrep -P` with 400 ms timeouts for silent commands like `sleep`).
-- `main.dart` hooks `busyNotifier` and `onInstancesChanged` to `windowManager.setPreventClose()`. `_handleWindowClose()` awaits `hasBusyTerminalAsync()` (800 ms timeout fallback) and shows a dedicated localized dialog:
-  - *“Terminal operation in progress — A command is still running in the internal terminal. Closing may interrupt it. Continue?”* (EN/IT/FR/DE/ES/PT).
-  - Mixed copy+terminal state shows combined message. Idle terminal closes instantly with no warning.
+```
+flutter analyze lib/services/file_service.dart lib/services/thumbnail_cache_service.dart
+cargo test  # rust
+flutter test
+```
 
-#### 5. Tools Menu — Terminal Icon Restored
+Key services: `parallel_copy_engine.dart`, `file_service.dart`, `thumbnail_cache_service.dart`, `ftp_service.dart`, `network_browser_service.dart`, `terminal_service.dart`, `deb_installer_service.dart`.
 
-- **Bug:** `Strumenti → Apri terminale interno (F4)` used `assets/icons/terminal.png` which existed on disk (64×64) but was not declared in `flutter.assets` in `pubspec.yaml`. The top menu via `Image(AssetImage)` without `errorBuilder` showed a blank/broken image; the empty-space menu via `CompactMenuRow` fell back to a generic `Icons.terminal`.
-- **Fix:** Declared `assets/icons/terminal.png` in `pubspec.yaml` and made `_mapMenuItemsToWidgets()` use `Image.asset(..., errorBuilder: Icon(Icons.image_not_supported))` for resilience.
+## License
 
-#### 6. File Operations & Reliability
-
-- **Copy/Move bug fixed:** Removed silent fallback that copied the *parent* directory when the source file was missing (`main.dart` `_copyFile` / `_moveFile`).
-- **Delete deduplication:** `_deleteMultipleFiles` now deduplicates parent/child selections (deleting a folder and its child no longer shows the parent twice) and shows the parent path in `delete_operation_window.dart`.
-- **.desktop support:** `FileService.isDesktopFile()` / `isDesktopFileSync()` detect `[Desktop Entry]` headers. `FileInfo.isDesktopFile` added, populated in `_getFileInfoAsync()`, icon rendered via `file_icon_service`, `Type` column shows “Program” in `file_list.dart`, `file_properties.dart`, `file_properties_tabs.dart`, `quick_look.dart`, and double-click launches via `xdg-open` before ELF check. Localized in 6 languages.
-
-#### 7. Generic Reliability & Resource Management
-
-- **Window IPC** (`/tmp/sage-fm-ipc`) polling changed from `listSync/readAsStringSync` every 2s on the main isolate to `await dir.list()` + `await file.readAsString()` async.
-- **Transfer progress timers** coalesced from 300 ms/500 ms to 500 ms/1000 ms to reduce I/O storm during copy.
-- **Leaks fixed:** `AudioPlayerWidget` now stores and cancels `onPlayerState/onPosition/onDuration` subscriptions; `main.dart` stores `_selectionSub` / `_secondPaneSelectionSub` and cancels on `dispose`.
-- **Glass/transparency:** `GlassTheme.isEnabled` now guards `BackdropFilter` in `navigation_bar.dart` (extracted `_buildBarContent()`) and `main.dart` scaffold, avoiding an always-on blur even when disabled.
-
-#### 8. Code Health
-
-- Removed duplicate import in `file_list.dart`, unused `Seek` import, 4 unused Rust dependencies in `Cargo.toml`, 13 dead Rust symbols in `lib.rs`, cleaned `rust_ffi.dart` typedefs. Both `cargo check` and `flutter analyze` pass clean (0 new errors).
-
----
-
-### Technical Details
-
-- **Stack:** Flutter (Impeller/OpenGL ES, GTK3 embedder), Rust FFI, `window_manager`, `shared_preferences`, `yaru`, `pdfrx`, `flutter_svg`.
-- **I/O model:** All heavy work (disk enumeration, thumbnail generation, archive, duplicate finder) is isolated where possible; v1.4.5 moves more to `Future.wait` / async and reduces synchronous `*Sync` calls on the UI thread.
-- **Localization:** EN, IT, FR, DE, ES, PT fully updated for new strings (`fileListTypeProgram`, `dialogCloseWhileTerminalTitle/Body`).
-- **Platform:** Linux-first, X11 + Wayland, tested on Mesa/Gallium (NVIDIA/AMD/Intel).
-
-**Upgrade is recommended for all users.** v1.4.5 makes SAGE feel instant on open, stable on close, and finally makes the integrated terminal a true daily driver — not a secondary widget.
+GPL-3.0 — see [LICENSE](LICENSE) / [LICENSE.md](LICENSE.md).
