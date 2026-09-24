@@ -60,13 +60,21 @@ fi
 
 echo "Creating AppImage..."
 cd "$APPIMAGE_DIR"
-ARCH=x86_64 "$APPIMAGETOOL" AppDir "$APPIMAGE_NAME"
-
-echo "AppImage created: $APPIMAGE_DIR/$APPIMAGE_NAME"
-echo "Making AppImage executable..."
-chmod +x "$APPIMAGE_NAME"
-
-cd ../..
-mv "$APPIMAGE_DIR/$APPIMAGE_NAME" "build/"
-
-echo "AppImage ready: build/$APPIMAGE_NAME"
+APPIMAGETOOL="appimagetool-x86_64.AppImage"
+if "./$APPIMAGETOOL" AppDir "$APPIMAGE_NAME" 2>&1; then
+    echo "AppImage created: $APPIMAGE_DIR/$APPIMAGE_NAME"
+    echo "Making AppImage executable..."
+    chmod +x "$APPIMAGE_NAME"
+    cd ../..
+    mv "$APPIMAGE_DIR/$APPIMAGE_NAME" "build/"
+    echo "AppImage ready: build/$APPIMAGE_NAME"
+else
+    echo "AVVISO: appimagetool fallito - l'AppImage non e' stato creato automaticamente"
+    echo "La struttura e' pronta in build/appimage/AppDir/"
+    echo "Per creare l'AppImage manualmente:"
+    echo "  cd build/appimage"
+    echo "  ARCH=x86_64 ./appimagetool-x86_64.AppImage AppDir ${APP_NAME}-${VERSION}-x86_64.AppImage"
+    echo ""
+    echo "Nota: il file .desktop potrebbe richiedere modifiche per essere accettato da appimagetool"
+    echo "Assicurarsi che il file desktop abbia i campi richiesti e l'icona corretta"
+fi
